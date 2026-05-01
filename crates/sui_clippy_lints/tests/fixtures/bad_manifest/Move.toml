@@ -1,0 +1,7 @@
+[package]
+name = "bad_manifest"
+version = "0.0.1"
+
+[dependencies]
+Unpinned = { git = "https://github.com/MystenLabs/sui.git" }
+Wild = { git = "https://github.com/example/example.git", rev = "*" }

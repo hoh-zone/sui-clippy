@@ -1,0 +1,9 @@
+[package]
+name = "declare_sui_clippy_lint"
+version = "0.4.0"
+edition.workspace = true
+license.workspace = true
+description = "Lint declaration macros and metadata for sui-clippy"
+
+[dependencies]
+serde = { workspace = true, features = ["derive"] }

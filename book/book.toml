@@ -1,0 +1,16 @@
+[book]
+authors = ["The sui-clippy contributors"]
+language = "en"
+title = "sui-clippy book"
+
+[rust]
+edition = "2024"
+
+[build]
+build-dir = "build"
+
+[output.html]
+git-repository-url = "https://github.com/hoh/sui-clippy/tree/main/book"
+
+[output.html.search]
+enable = true

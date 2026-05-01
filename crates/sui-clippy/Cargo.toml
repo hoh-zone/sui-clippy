@@ -1,0 +1,34 @@
+[package]
+name = "sui-clippy"
+version = "0.4.0"
+edition.workspace = true
+license.workspace = true
+description = "Sui Move linter CLI (Clippy-shaped architecture)"
+default-run = "sui-clippy"
+
+[features]
+default = []
+move_compiler = ["sui_clippy_lints/move_compiler"]
+
+[lib]
+name = "sui_clippy"
+path = "src/lib.rs"
+
+[[bin]]
+name = "sui-clippy"
+path = "src/main.rs"
+
+[[bin]]
+name = "cargo-sui-clippy"
+path = "src/bin/cargo-sui-clippy.rs"
+
+[dependencies]
+anyhow.workspace = true
+clap.workspace = true
+declare_sui_clippy_lint.workspace = true
+serde = { workspace = true, features = ["derive"] }
+serde_json.workspace = true
+sui_clippy_config.workspace = true
+sui_clippy_lints.workspace = true
+sui_clippy_utils.workspace = true
+walkdir.workspace = true

@@ -1,0 +1,21 @@
+[package]
+name = "sui-clippy-lsp"
+version = "0.4.0"
+edition.workspace = true
+license.workspace = true
+description = "Minimal LSP server that runs sui_clippy_lints on Move documents (stdio)"
+
+[[bin]]
+name = "sui-clippy-lsp"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+lsp-server.workspace = true
+lsp-types.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sui_clippy_config.workspace = true
+sui_clippy_lints.workspace = true
+sui_clippy_utils.workspace = true
+url.workspace = true

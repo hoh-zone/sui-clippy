@@ -1,0 +1,59 @@
+# Build the mdBook + searchable lint list and deploy to GitHub Pages.
+#
+# First-time setup (repository Settings → Pages):
+# - Build and deployment: Source = "GitHub Actions"
+#
+# Site URL: https://<owner>.github.io/<repo>/
+
+name: Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: dtolnay/rust-toolchain@1.95
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: .
+
+      - name: Install mdBook
+        run: cargo install mdbook --version 0.4.49 --locked
+
+      - name: Regenerate lint index and book chapter
+        run: cargo run -p sui-clippy-docgen --locked
+
+      - name: Build mdBook
+        env:
+          MDBOOK_OUTPUT__HTML__SITE_URL: /${{ github.event.repository.name }}/
+        run: cd book && mdbook build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: book/build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

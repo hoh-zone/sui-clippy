@@ -1,0 +1,18 @@
+[package]
+name = "sui-clippy-docgen"
+version = "0.4.0"
+edition.workspace = true
+license.workspace = true
+description = "Regenerate book/src/lints_generated.md and book/src/lints/* lint index from sui_clippy_lints metadata"
+publish = false
+
+[[bin]]
+name = "sui-clippy-docgen"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+declare_sui_clippy_lint.workspace = true
+serde = { workspace = true, features = ["derive"] }
+serde_json.workspace = true
+sui_clippy_lints.workspace = true

@@ -1,0 +1,13 @@
+[package]
+name = "sui_clippy_config"
+version = "0.4.0"
+edition.workspace = true
+license.workspace = true
+description = "Configuration loading for sui-clippy"
+
+[dependencies]
+anyhow.workspace = true
+declare_sui_clippy_lint.workspace = true
+globset.workspace = true
+serde.workspace = true
+toml.workspace = true

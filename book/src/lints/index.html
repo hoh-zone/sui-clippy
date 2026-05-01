@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>sui-clippy lints</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="page-header">
+    <h1>sui-clippy lints <span class="badge">11 rules</span></h1>
+    <p class="subtitle">Sui Move linter — same idea as <a href="https://rust-lang.github.io/rust-clippy/stable/index.html">rust-clippy’s lint list</a>.</p>
+  </header>
+  <div class="toolbar">
+    <label for="q">Search</label>
+    <input id="q" type="search" placeholder="id, category, or doc text…" autocomplete="off"/>
+    <label for="cat">Category</label>
+    <select id="cat"><option value="">(all)</option></select>
+  </div>
+  <table id="lint-table">
+    <thead><tr><th>Lint</th><th>Category</th><th>Default</th><th>Documentation</th></tr></thead>
+    <tbody id="lint-body"></tbody>
+  </table>
+  <p class="footer">Generated from crate metadata · <a href="https://github.com/hoh/sui-clippy">repository</a></p>
+  <script type="application/json" id="lint-json">[{"id":"bare_abort","category":"suspicious","default_level":"warn","doc":"`abort` with a magic numeric code is easy to misuse; prefer named constants or structured errors."},{"id":"clock_timestamp","category":"suspicious","default_level":"warn","doc":"Clock reads can be manipulated by validators in tests; on-chain code should treat timestamps as hints, not strong security boundaries."},{"id":"dynamic_field_access","category":"security","default_level":"allow","doc":"Dynamic field APIs are easy to get wrong; verify key types, ownership, and access control."},{"id":"empty_public_entry","category":"correctness","default_level":"deny","doc":"A public entry function with an empty body is almost certainly a mistake or unsafe stub."},{"id":"git_dep_unpinned","category":"suspicious","default_level":"warn","doc":"Git dependencies without `rev`, `branch`, or `tag` are not reproducible builds."},{"id":"missing_move_edition","category":"style","default_level":"warn","doc":"Move.toml [package] should declare an `edition` (for example Move 2024) for consistent tooling and language behavior."},{"id":"public_fun_transfer","category":"security","default_level":"allow","doc":"transfer::* inside a `public fun` body widens who may invoke object moves; confirm this matches your capability model."},{"id":"test_only_in_sources","category":"nursery","default_level":"allow","doc":"`#[test_only]` in non-test paths is easy to ship accidentally; prefer `tests/` modules or `#[test_only]` only in test-only files."},{"id":"todo_comment","category":"suspicious","default_level":"warn","doc":"Track and remove TODO/FIXME markers before release."},{"id":"tx_context_sender","category":"suspicious","default_level":"warn","doc":"Using tx_context::sender() can encourage self-transfers; prefer returning objects to callers for PTB composability where appropriate."},{"id":"wildcard_git_ref","category":"correctness","default_level":"deny","doc":"Wildcard `rev` or `branch` on a git dependency is almost never intended for production."}]</script>
+  <script src="script.js"></script>
+</body>
+</html>
